@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   width="75mm"
+   height="55.000004mm"
+   viewBox="0 0 75 55.000004"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="draft.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:ns14="http://www.iki.fi/pav/software/textext/">
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker2660"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path2658" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1718"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path1716" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Send"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Send"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1221" />
+    </marker>
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient893">
+      <stop
+         style="stop-color:#0000ff;stop-opacity:1"
+         offset="0"
+         id="stop889" />
+      <stop
+         style="stop-color:#0000ff;stop-opacity:0"
+         offset="1"
+         id="stop891" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient893"
+       id="radialGradient878"
+       gradientUnits="userSpaceOnUse"
+       cx="58.264755"
+       cy="72.162773"
+       fx="58.264755"
+       fy="72.162773"
+       r="5.3453903"
+       gradientTransform="matrix(2.6000001,0,0,2.6000001,-93.223612,-115.46044)" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="101.60714"
+     inkscape:cy="91.607143"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer4"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="2560"
+     inkscape:window-height="1369"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Nube electrónica"
+     transform="translate(-47.285046,-30.443808)">
+    <g
+       transform="matrix(0.705556,0,0,0.705556,109.353,39.665)"
+       ns14:version="1.3.0"
+       ns14:texconverter="pdflatex"
+       ns14:pdfconverter="inkscape"
+       ns14:text="B"
+       ns14:preamble="C:\Users\Giovanni\AppData\Roaming\inkscape\extensions\textext\default_packages.tex"
+       ns14:scale="2.0"
+       ns14:alignment="middle center"
+       ns14:jacobian_sqrt="0.705556"
+       id="g1068">
+      <defs
+         id="id-144da6a6-89c4-4920-862b-00695cc3cfbb">
+        <g
+           id="id-d312bcf3-269f-41a3-b86a-7edf851f1c3c">
+          <symbol
+             overflow="visible"
+             id="id-70df0095-5c64-4172-b2b9-47502da2f6bf">
+            <path
+               style="stroke:none"
+               d=""
+               id="id-03d6e31b-1704-4998-97e0-7d0ad76bca04" />
+          </symbol>
+          <symbol
+             overflow="visible"
+             id="id-b3aaae45-70bf-4d3a-b2a6-fb1423c52370">
+            <path
+               style="stroke:none"
+               d="m 2.21875,-3.65625 v -2.4375 C 2.21875,-6.4375 2.234375,-6.5 2.703125,-6.5 H 3.9375 c 0.96875,0 1.3125,0.84375 1.3125,1.375 0,0.640625 -0.484375,1.46875 -1.59375,1.46875 z M 4.5625,-3.5625 C 5.53125,-3.75 6.21875,-4.390625 6.21875,-5.125 6.21875,-5.984375 5.296875,-6.8125 4,-6.8125 H 0.359375 V -6.5 H 0.59375 c 0.765625,0 0.796875,0.109375 0.796875,0.46875 v 5.25 c 0,0.359375 -0.03125,0.46875 -0.796875,0.46875 H 0.359375 V 0 h 3.90625 c 1.328125,0 2.21875,-0.890625 2.21875,-1.828125 0,-0.859375 -0.8125,-1.609375 -1.921875,-1.734375 z m -0.609375,3.25 h -1.25 c -0.46875,0 -0.484375,-0.0625 -0.484375,-0.390625 v -2.71875 h 1.875 C 5.078125,-3.421875 5.5,-2.5 5.5,-1.828125 5.5,-1.125 4.96875,-0.3125 3.953125,-0.3125 Z m 0,0"
+               id="id-51b3066d-196d-4651-be25-0800d37dde5d" />
+          </symbol>
+        </g>
+      </defs>
+      <g
+         id="id-9b0ca34f-8fe9-4060-8cfa-01d893641487"
+         transform="translate(-149.071,-127.953)">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="id-33838274-8b04-4e1c-893b-c50590cf4257">
+          <g
+             transform="translate(148.712,134.765)"
+             id="g1107" />
+        </g>
+      </g>
+    </g>
+  </g>
+  <g
+     inkscape:label="Núcleos"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-47.285046,-30.443808)" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Electrones"
+     transform="translate(-47.285046,-30.443808)">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+       id="rect1"
+       width="74.599998"
+       height="54.600002"
+       x="47.485046"
+       y="30.643808"
+       ry="3.52583" />
+    <text
+       xml:space="preserve"
+       style="font-weight:bold;font-size:16.9333px;font-family:Arial;-inkscape-font-specification:'Arial Bold';text-align:center;text-anchor:middle;fill:none;stroke:#000000;stroke-width:0.4;stroke-dasharray:none"
+       x="43.954552"
+       y="98.519211"
+       id="text1"
+       transform="rotate(-30)"><tspan
+         sodipodi:role="line"
+         id="tspan1"
+         style="stroke-width:0.4"
+         x="43.954552"
+         y="98.519211">Draft</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="LaTeX"
+     transform="translate(-47.285046,-30.443808)" />
+</svg>

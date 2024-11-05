@@ -1,0 +1,60 @@
+\renewcommand*{\thepage}{\thechapter-\arabic{page}}
+\pretocmd{\chapter}{
+\clearpage
+\setcounter{page}{1}
+}{}{}
+
+\makeatletter
+\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{2.3em}{\hypersetup{linkcolor=black}#1}{#2\hskip 1.5em}}
+\renewcommand{\@pnumwidth}{38.92712pt}
+\makeatother
+
+\cleardoublepage
+
+\chapter{\label{ap:procesamientoImagenes}Procesamiento de imágenes}
+
+En la sección~\ref{sub:densidadOptica} se muestra una forma de calcular la densidad óptica de la nube atómica a partir de los perfiles de intensidad. Estos perfiles se obtienen usando una cámara CCD (figura~\ref{fig:montajeOM2}), dicho proceso genera imágenes como arreglos bidimensionales de píxeles. El registro en cada píxel es proporcional a toda la luz transmitida desde una ubicación específica en el plano del objeto (plano de los átomos) durante el tiempo de iluminación del haz de prueba.
+
+\p Después del tiempo $\tau$ de iluminación, el registro en el pixel de la posición $(i,j)$ en la imagen está ligado al perfil de intensidad por~\supercite{horikoshi}
+
+\begin{equation}
+\label{ec:registroPixel}
+R_\sm{i,j}=\frac{\eta GT}{\hbar\omega}\frac{A_\sm{\mathrm{pixel}}}{M^\sm{2}}\int_{0}^{\tau}I(x_\sm{i},y_\sm{j};t)\:dt\approx C \braket*{I(x_\sm{i},y_\sm{j})}\tau,
+\end{equation}
+
+en donde $\eta$ es la eficiencia cuántica de sensor CCD, $G$ es la ganancia de conversión analógico-digital, $T$ es el coeficiente de transmisión del sistema de imagen (los componentes ópticos), $A_\sm{\mathrm{pixel}}$ es el área de un pixel, $M$ es el factor de magnificación (o desmagnificación) del sistema de imagen, y $\braket*{I(x_\sm{i},y_\sm{j})}$ es la intensidad promedio sobre $\tau$. Dado que se tienen el mismo factor constante $C$, entonces
+
+\begin{equation}
+\label{ec:densidadOpticaCCD}
+\OD(x_\sm{i},y_\sm{j})\approx-\ln\left[f\frac{\braket*{I(x_\sm{i},y_\sm{j})}-\braket*{I_\sm{D}(x_\sm{i},y_\sm{j})}}{\braket*{I_\sm{B}(x_\sm{i},y_\sm{j})}-\braket*{I_\sm{D}(x_\sm{i},y_\sm{j})}}\right].
+\end{equation}
+
+De forma tal que el número de átomos se calcula con la siguiente expresión
+
+\begin{equation}
+\label{ec:numeroAtomosCCD}
+N\approx\frac{A_\sm{\mathrm{pixel}}}{M^\sm{2}\sigma_\sm{0}}\sum_\sm{i,j}\OD(x_\sm{i},y_\sm{j}),
+\end{equation}
+
+para $\sigma_\sm{0}=3\lambda_\sm{0}^\sm{2}/2\pi$ la sección eficaz resonante de absorción.
+
+%\cleardoublepage
+%
+%\chapter{\label{cap:}Segundo apéndice}
+%
+%Apéndice
+%
+%\cleardoublepage
+%
+%\chapter{\label{cap:tercer}Tercer apéndice}
+%
+%%\localToC
+%
+%Apéndice con TOC
+
+%\clearpage
+
+%\input{Archivos/Planos}
+
+%\stopcontents[chapters]
+%\cleardoublepage

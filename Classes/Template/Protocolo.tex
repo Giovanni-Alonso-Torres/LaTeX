@@ -1,0 +1,69 @@
+\documentclass[11pt]{book}
+
+\usepackage[version=digital]{egat}
+\makeindex[title=\nombreIdx,intoc]
+\logoUniversidad{UNAM_logo}
+\logoInstituto{PCF_logo}
+\myTitle{Caracterización de pulsos láser debido a una nube de átomos fríos en condiciones de Transparencia Electromagnéticamente Inducida}
+\miTitulo{Caracterización de pulsos láser debido a una nube de átomos fríos en condiciones de Transparencia Electromagnéticamente Inducida}
+\miNombre{Edgar Giovanni Alonso Torres}
+\miUniversidad{Universidad Nacional Aut\'{o}noma de M\'{e}xico}
+\miPosgrado{Posgrado en Ciencias Físicas}
+\miCampo{Física Cuántica, Atómica y Molecular}
+\miAsunto{Protocolo de investigación}
+\miGrado{Doctor en Ciencias (Física)}
+\miTutor{Dr. Asaf Paris Mandoki (IF-UNAM)}
+\miComiteUno{Dr. José Ignacio Jiménez Mier y Terán}
+\miComiteDos{Dr. Alfred Barry U'Ren Cortés}
+\miCiudad{Ciudad de México,}
+\mes{Octubre}
+\anio{2024}
+\palabrasClave{óptica, cuántica, átomos, Rydberg, interacción, enfriamiento, láser, MOT, presión, cámara}
+\metaInformacion
+
+\begin{document}
+
+\renewcommand{\tablename}{Tabla}
+
+\frontmatter
+\portada
+%\jurado En el paquete quitar las líneas que empiezan en 641 sí se pone jurado
+
+%\input{Archivos/Frontmatter}
+
+\tableofcontents
+%\listoftables
+%\listoffigures
+
+%\input{Archivos/Nomenclatura}
+
+\mainmatter
+
+\include{Capitulos/ObjetivoGeneral}
+
+\include{Capitulos/Introduccion}
+
+\include{Capitulos/Antecedentes}
+
+\include{Capitulos/ObjetivosEspecificos}
+
+\include{Capitulos/MetodologiaTecnicas}
+
+\include{Capitulos/Avances}
+
+\include{Capitulos/Plan}
+
+\cleardoublepage
+
+\appendix
+
+%\input{Archivos/Backmatter}
+
+%\indice
+
+\cleardoublepage
+\ifthenelse{\equal{\apendiceExtra}{0}}{\renewcommand{\thechapter}{B}}{\renewcommand{\thechapter}{F}}
+
+\bibliografia
+
+\end{document}

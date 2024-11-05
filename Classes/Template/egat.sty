@@ -1,0 +1,947 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{egat}[22/10/2024 v1.0 (E.G. Alonso-Torres)]
+
+% Paquetes que se necesitan
+
+\RequirePackage{afterpage}
+\RequirePackage{alphalph} % Para definir el enumerado de p\'{a}ginas con letras que excede el alfabeto (X,Y, Z,AA,AB,...)
+\RequirePackage{amsfonts}
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+\RequirePackage{anyfontsize} % Para usar el comando \fontsize
+\RequirePackage{apptools} % Proporciona \IfAppendix para los encabezados en los ap\'{e}ndices
+\RequirePackage{array}
+%\PassOptionsToPackage{pages=some}{background}
+%\RequirePackage{background}
+\PassOptionsToPackage{utf8}{inputenc}
+\RequirePackage{inputenc} % Para escribir acentos y otros caracteres como gente civilizada, cargar antes de biblatex
+\RequirePackage{color} % Cargar antes de biblatex
+\PassOptionsToPackage{backend=biber,sorting=none,citestyle=numeric-comp}{biblatex} % La opcion pdf de datamodel es el archivo pdf.dbx que se crea en el estilo de la bibliograf\'{i}a
+\RequirePackage{biblatex} % Paquete para la bibliograf\'{i}a, es indispensable cambiar la configuraci\'{o}n de Texmaker en Bib(la)tex de bibtex a biber %
+\PassOptionsToPackage{spanish,activeacute}{babel} % activeacute permite pasar de, por ejemplo, \'{e} a 'e
+\RequirePackage{babel} % Traduce al espa\~{n}ol los nombres como, por ejemplo, cap\'{i}tulo, cuadro en lugar de chapter, table. Cargar despu\'{e}s del paquete biblatex
+\RequirePackage{BOONDOX-cal} % Para poder usar \mathcal en letras min\'{u}sculas
+\RequirePackage{booktabs} % Para hacer l\'{i}neas en tablas m\'{a}s gruesas y otros trucos de tablas
+\RequirePackage{calc}
+\RequirePackage{cancel}
+\PassOptionsToPackage{font=footnotesize,labelfont=bf,labelsep=period}{caption}
+\RequirePackage{caption}
+\RequirePackage{changepage}
+\RequirePackage{colortbl}
+\RequirePackage{delarray}
+\RequirePackage{dsfont} % Para colocar el operador unidad
+\RequirePackage{emptypage}
+\RequirePackage{enumerate}
+\RequirePackage{enumitem}
+\RequirePackage{etoolbox}
+\RequirePackage{eurosym}
+\RequirePackage{everyshi} % Necesario para el paquete totpages
+\RequirePackage{fancybox}
+\RequirePackage{fancyhdr}
+\RequirePackage{fix-cm} % Fuente de tama\~{n}o arbitrario
+\RequirePackage{float} % Para la opci\'{o}n H en los flotantes
+\PassOptionsToPackage{T1}{fontenc}
+\RequirePackage{fontenc}
+\PassOptionsToPackage{flushmargin}{footmisc}
+\RequirePackage{footmisc}
+\RequirePackage{geometry}
+\PassOptionsToPackage{pdftex}{graphicx}
+\RequirePackage{graphicx}
+\RequirePackage{grffile} % Para que no produzca errores cuando las rutas tengan espacios
+\RequirePackage{ifthen}
+\RequirePackage{csquotes} % Cuando se usa el paquete babel o polyglossia con el de biblatex es recomendable usar el paquete csquotes para que los textos citados se compongan seg\'{u}n las reglas de su idioma principal. Cargar despu\'{e}s del paquete inputec
+\RequirePackage{keyval} % Necesario para el paquete totpages
+\RequirePackage{kvoptions} % Para establecer opciones del paquete
+\RequirePackage{latexsym}
+\RequirePackage{lipsum}
+\RequirePackage{listings} % Para crear c\'{o}digos como Python
+\RequirePackage{lmodern}
+\RequirePackage{LobsterTwo}
+\RequirePackage{imakeidx} % Para generar el \'{i}ndice alfab\'{e}tico sin necesidad de un compilador m\'{a}s que el de LaTeX
+\RequirePackage{marginnote}
+\RequirePackage{mathrsfs}
+\RequirePackage{mathtools}
+\RequirePackage{multirow}
+\PassOptionsToPackage{percent}{overpic}
+\RequirePackage{overpic} % Para colocar LaTeX encima de una imagen
+\RequirePackage{pdfpages} % Para incluir archivos PDF
+\RequirePackage{pict2e} % Para ampliar el rango que define la pendiente del comando \line
+%\RequirePackage{printlen}
+%\RequirePackage{ragged2e}
+\RequirePackage{rotating} % Para rotar texto o ecuaciones (utilizado en \put)
+\RequirePackage{sectsty} % Para poner en las secciones las expresiones matem\'{a}ticas en negritas
+\RequirePackage{setspace} % Para usar el ambiente singlespace
+\RequirePackage{siunitx}
+\PassOptionsToPackage{labelfont=normalfont}{subcaption}
+\RequirePackage{subcaption}
+\RequirePackage{tabu}
+\RequirePackage{tabulary}
+\RequirePackage{tabularx}
+\RequirePackage{tensor} % Para escribir tensores, es decir, expresiones con pre-sub\'{i}ndices y pre-super\'{i}ndices
+\RequirePackage{textcomp} % Para que funcione la opci\'{o}n upquote al definir estilos de c\'{o}digo del paquete listings
+\PassOptionsToPackage{most}{tcolorbox}
+\RequirePackage{tcolorbox}
+\RequirePackage{tikz}
+\RequirePackage{times}
+\RequirePackage{titleref}
+\PassOptionsToPackage{explicit}{titlesec}
+\RequirePackage{titlesec} % Genera los estilos personalizados de partes como cap\'{i}tulos, secciones y dem\'{a}s
+\RequirePackage{titletoc} % Necesario para el paquete titlesec y los contenidos locales
+\RequirePackage{totpages}
+\RequirePackage{transparent}
+\RequirePackage{upgreek} % Para usar \upgamma para el \'{i}ndice adiab\'{a}tico
+\PassOptionsToPackage{hyphens}{url} % En donde hay guiones permite que la URL cambie de l\'{i}nea
+\RequirePackage{url}
+\RequirePackage{verbatim}
+\RequirePackage{wrapfig}
+\RequirePackage{xcolor}
+\RequirePackage{xfrac} % Para usar el comando \sfrac
+\RequirePackage{xifthen} % Para usar el comando \isempty
+\RequirePackage{xpatch}
+\RequirePackage{xspace}
+\PassOptionsToPackage{pdftex,pdfpagelabels,unicode,psdextra}{hyperref}
+\RequirePackage{hyperref} % Da las configuraciones de los enlaces del archivo PDF y su meta-informaci\'{o}n
+\PassOptionsToPackage{numbered}{bookmark}
+\RequirePackage{bookmark} % Para personalizar los marcadores
+
+\pdfminorversion=5
+\pdfcompresslevel=9
+\pdfobjcompresslevel=2
+\pdfadjustspacing=1
+
+% Definici\'{o}n de opciones
+
+\DeclareStringOption [digital]{version}
+\DeclareStringOption [final]{texto}
+\DeclareDefaultOption{\PackageError{gio}{Unknown option '\CurrentOption' for package 'gio'}{The option '\CurrentOption' was not declared in package 'gio', perhaps you\MessageBreak misspelled its name.}}
+\ProcessKeyvalOptions*
+\ifthenelse{\equal{\egat@version}{digital} \OR \equal{\egat@version}{impresa} \OR \equal{\egat@version}{giovanni}}{}{\PackageError{gio}{Undefined version  '\egat@version'}{'digital' and 'impresa' are the possible values for version option}}
+\ifthenelse{\equal{\egat@texto}{final}}{\newcommand{\extendido}[1]{}}{\ifthenelse{\equal{\egat@texto}{extendido}}{\newcommand{\extendido}[1]{#1}}{\PackageError{gio}{Undefined '\egat@texto' style of the text}{'final' and 'extendido' are the possible values for text option}}}
+\ifthenelse{\equal{\egat@version}{digital}}{\newcommand{\version}[3][]{#3}}{\ifthenelse{\equal{\egat@version}{giovanni}}{\newcommand{\version}[3][]{#2}}{\newcommand{\version}[3][]{#1}}}
+
+% Definici\'{o}n de unidades
+
+\DeclareSIUnit\torr{Torr}
+\DeclareSIUnit\vdc{VDC}
+\DeclareSIUnit\vac{VAC}
+\DeclareSIUnit\gauss{G}
+\DeclareSIUnit\angstrom{\text{\AA}} % La unidad angstrom se quit\'{o} del SI
+\DeclareSIUnit\bar{bar} % La unidad bar se quit\'{o} del SI
+
+% Definici\'{o}n de variables
+
+\def\hojaAncho{215.9mm}
+\def\hojaAlto{279.4mm}
+\def\titleMargen{25.9mm} % 25.9mm = bindingoffset+inner+outer
+\def\titleWidth{\hojaAncho-\titleMargen}
+\def\fbwInner{\hojaAncho*\real{0.20}} % 20% del ancho de la hoja
+\def\fbwOuter{\hojaAncho*\real{0.10}} % 15% del ancho de la hoja
+\def\frontbackWidth{\hojaAncho-\fbwInner-\fbwOuter}
+\ifthenelse{\equal{\egat@version}{digital} \OR \equal{\egat@version}{giovanni}}{\def\bibWidth{\frontbackWidth}}{\def\bibWidth{\frontbackWidth+2.09746pt}}
+\def\innerJurado{\titleMargen*\real{0.5}} % Hace que en la hoja del jurado el margen izquierdo y derecho sea el mismo
+\def\mainWidth{\hojaAncho-65.9mm} % 65.9mm = bindingoffset+inner+marginparsep+marginpar+outer
+\def\nombreToC{Contenidos}
+\def\nombreLoT{Lista de tablas}
+\def\nombreLoF{Lista de figuras}
+\def\nombreIdx{\'{I}ndice}
+\def\nombreBib{Referencias}
+\def\nombreCodigo{C\'{o}digo}
+
+% Definici\'{o}n de colores
+
+\ifthenelse{\equal{\egat@version}{digital} \OR \equal{\egat@version}{giovanni}}{
+\definecolor{colorCitas}{cmyk}{0,1,0,0.35}
+\definecolor{colorEnlaces}{cmyk}{0.75,0,0.85,0.55}
+\definecolor{codBackground}{cmyk}{0,0,0.03,0.05}
+\definecolor{codComentarios}{cmyk}{1,0,1,0.3}
+\definecolor{codLineas}{cmyk}{0,0,0,0.5}
+\definecolor{codCadena}{cmyk}{0,0.7,1,0}%{0.3,1,0,0.2}
+\definecolor{codPalabrasClave}{cmyk}{0.3,1,0,0.2}%{0,1,0,0}
+\definecolor{codEmfatizado}{cmyk}{1,0.55,0,0.2}
+\definecolor{a2NRojo}{RGB}{175,0,0}
+\definecolor{a2NAzul}{RGB}{0,46,229}
+\definecolor{a2NAmarillo}{RGB}{255,191,0}
+\definecolor{mFMNegro}{RGB}{58,58,58}
+\definecolor{mFMCobre}{RGB}{162,83,65}
+\definecolor{mFMGris}{RGB}{163,161,161}
+\definecolor{MOTVerde}{RGB}{17,166,0}
+\definecolor{MOTMorado}{RGB}{98,0,178}
+\newcommand{\tcbcolback}{yellow!50}
+\newcommand{\tcbcolframe}{yellow!20!black}
+\newcommand{\tcbfill}{tcbcolback!80!black}
+}{
+\definecolor{codBackground}{cmyk}{0,0,0,0}
+\definecolor{codComentarios}{cmyk}{0,0,0,0.5}
+\definecolor{codLineas}{cmyk}{0,0,0,0.5}
+\definecolor{codCadena}{cmyk}{0,0,0,1}
+\definecolor{codPalabrasClave}{cmyk}{0,0,0,1}
+\definecolor{codEmfatizado}{cmyk}{0,0,0,1}
+\definecolor{a2NRojo}{cmyk}{0,0,0,1}
+\definecolor{a2NAzul}{cmyk}{0,0,0,1}
+\definecolor{a2NAmarillo}{cmyk}{0,0,0,1}
+\definecolor{mFMNegro}{cmyk}{0,0,0,1}
+\definecolor{mFMCobre}{cmyk}{0,0,0,1}
+\definecolor{mFMGris}{cmyk}{0,0,0,1}
+\definecolor{MOTVerde}{cmyk}{0,0,0,1}
+\definecolor{MOTMorado}{cmyk}{0,0,0,1}
+\newcommand{\tcbcolback}{white!50}
+\newcommand{\tcbcolframe}{white!20!black}
+\newcommand{\tcbfill}{tcbcolback!80!black}
+}
+
+% Informaci\'{o}n para la portada, la hoja de datos del jurado y la meta-informaci\'{o}n
+
+\def\logoUniversidad#1{\gdef\logoU{#1}}
+\def\logoU{}
+\def\logoInstituto#1{\gdef\logoI{#1}}
+\def\logoI{}
+\def\myTitle#1{\gdef\Title{#1}}
+\def\Title{Title}
+\def\miTitulo#1{\gdef\Titulo{#1}}
+\def\Titulo{T\'{i}tulo}
+\def\miNombre#1{\gdef\Nombre{#1}}
+\def\Nombre{Nombre}
+\def\miUniversidad#1{\gdef\Universidad{#1}}
+\def\Universidad{Universidad}
+\def\miPosgrado#1{\gdef\Posgrado{#1}}
+\def\Posgrado{Posgrado}
+\def\miCampo#1{\gdef\Campo{#1}}
+\def\Campo{Campo}
+\def\miAsunto#1{\gdef\Asunto{#1}}
+\def\Asunto{Asunto}
+\def\miGrado#1{\gdef\Grado{#1}}
+\def\Grado{Grado}
+\def\miTutor#1{\gdef\Tutor{#1}}
+\def\Tutor{Tutor}
+\def\miComiteUno#1{\gdef\ComiteUno{#1}}
+\def\ComiteUno{Tutor}
+\def\miComiteDos#1{\gdef\ComiteDos{#1}}
+\def\ComiteDos{Tutor}
+\def\miCiudad#1{\gdef\Ciudad{#1}}
+\def\Ciudad{Ciudad}
+\def\mes#1{\gdef\Mes{#1}}
+\def\Mes{Mes}
+\def\anio#1{\gdef\Anio{#1}}
+\def\Anio{A\~{n}o}
+\def\palabrasClave#1{\gdef\Clave{#1}}
+\def\Clave{}
+
+% Configuraci\'{o}n del PDF y enlaces
+
+\ifthenelse{\equal{\egat@version}{digital}}{
+\hypersetup{
+colorlinks=true,
+linktoc=all,
+pdfstartview={XYZ null null 1.25},
+pdfborder={0 0 0},
+breaklinks=true,
+bookmarksnumbered,
+bookmarksopen,
+bookmarksopenlevel=1,
+urlcolor=blue,
+linkcolor=colorEnlaces,
+citecolor=colorCitas
+}}{
+\hypersetup{
+colorlinks=false,
+linktoc=all,
+pdfstartview={XYZ null null 1.00},
+pdfborder={0 0 0},
+breaklinks=true,
+bookmarksnumbered,
+bookmarksopen,
+bookmarksopenlevel=1,
+}}
+
+% Configuraci\'{o}n de la meta-informaci\'{o}n del archivo PDF
+
+\newcommand{\metaInformacion}{
+\hypersetup{
+pdftitle={\Titulo},
+pdfauthor={\Nombre},
+pdfsubject={\Asunto},
+pdfkeywords={\Clave},
+pdfcreator={pdfLaTeX, MiKTeX and Texmaker},
+pdfproducer={LaTeX with hyperref and BibLaTeX}
+}}
+
+% Personalizaci\'{o}n de los marcadores
+
+\makeatletter
+\bookmarksetup{
+addtohook={
+\ifnum\bookmarkget{level}=0
+\bookmarksetup{bold}
+\fi
+\ifnum\bookmarkget{level}=1
+\bookmarksetup{italic}
+\fi
+}}
+\renewcommand{\Hy@numberline}[1]{#1.~}
+\makeatother
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\addtocontents{lot}{\protect\setcounter{tocdepth}{4}}
+\addtocontents{lof}{\protect\setcounter{tocdepth}{4}}
+
+% Configuraci\'{o}n de algunas estructuras del contenido
+
+\setlength\parindent{0mm}
+\decimalpoint
+\setlength{\extrarowheight}{3pt}
+\allsectionsfont{\boldmath} % Proporcionado por el paquete sectsty
+\renewcommand{\labelitemi}{$\bullet$}
+\renewcommand*{\marginfont}{\footnotesize}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+\makeatletter
+\let\oldsupercite\supercite
+\renewcommand{\supercite}{\ifthenelse{\equal{\egat@version}{digital}}{\oldsupercite}{\cite}}
+\makeatother
+
+%% Deja en color negro los enlaces en ToC's en el texto, agrega sangrado a los p\'{a}rrafos en ToC, elimina el sangrado de las listas de tablas y figuras, y coloca punto en ToC despu\'{e}s del n\'{u}mero/letra
+
+\makeatletter
+\renewcommand*\l@chapter[2]{%
+  \ifnum \c@tocdepth >\m@ne
+    \addpenalty{-\@highpenalty}%
+    \vskip 0.5em \@plus\p@
+    \setlength\@tempdima{1.5em}%
+    \begingroup
+      \parindent \z@ \rightskip \@pnumwidth
+      \parfillskip -\@pnumwidth
+      \leavevmode \bfseries
+      \advance\leftskip\@tempdima
+      \hskip -\leftskip
+      {\hypersetup{linkcolor=black} #1}\nobreak\hfil
+      \nobreak\hb@xt@\@pnumwidth{\hss #2%
+                                 \kern-\p@\kern\p@}\par
+      \penalty\@highpenalty
+    \endgroup
+  \fi}
+\renewcommand*\l@section[2]{\@dottedtocline{1}{1.5em}{2.3em}{\hypersetup{linkcolor=black}#1}{#2}}
+\renewcommand*\l@subsection[2]{\@dottedtocline{2}{3.8em}{3.2em}{\hypersetup{linkcolor=black}#1}{#2}}
+\renewcommand*\l@subsubsection[2]{\@dottedtocline{3}{7.0em}{4.1em}{\hypersetup{linkcolor=black}#1}{#2}}
+\renewcommand*\l@paragraph[2]{\@dottedtocline{4}{11.1em}{5em}{\hypersetup{linkcolor=black}#1}{#2}}
+\renewcommand*\l@subparagraph[2]{\@dottedtocline{5}{12em}{6em}{\hypersetup{linkcolor=black}#1}{#2}}
+\renewcommand*\l@figure[2]{\@dottedtocline{1}{0em}{2.3em}{\hypersetup{linkcolor=black}#1}{#2}}
+\let\l@table\l@figure
+\makeatother
+\let\savenumberline\numberline
+\def\numberline#1{\savenumberline{#1.}}
+
+%% Comando para las notas al margen
+
+\newcounter{miNota}
+\newcommand{\miNota}[2][0]{\refstepcounter{miNota}\textsuperscript{\ref{marginnote\themiNota}}\marginnote{\label{marginnote\themiNota}\textsuperscript{\tiny\themiNota}\hspace{1pt}\tiny#2}[#1\baselineskip]}
+
+%% Estilo en la bibliograf\'{i}a
+
+\DeclareFieldFormat[article]{title}{\mkbibitalic{#1}}
+%\renewbibmacro{in:}{\ifentrytype{article}{}{\printtext{\bibstring{in}\intitlepunct}}}
+\makeatletter
+\ifthenelse{\equal{\egat@version}{digital}}{\DeclareFieldFormat[article]{journaltitle}{\ifthenelse{\iffieldundef{url}}{#1}{\href{\thefield{url}}{#1}}}}{\DeclareFieldFormat[article]{journaltitle}{#1}}
+\makeatother
+\DeclareFieldFormat[article]{volume}{\mkbibbold{#1}}
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[article]{year}{\mkbibparens{#1}}
+\DeclareFieldFormat[online]{note}{#1}
+\DeclareBibliographyDriver{article}{% Los signos de comentario % en este comando son obligatorios pues de no estar se agregan espacios
+\ifthenelse{\iffieldundef{note}}{%
+\printnames{author}%
+\setunit*{\addcomma\space}%
+\printfield{title}%
+\setunit*{\addcomma\space}%
+\printfield{journaltitle}%
+\setunit*{\addspace}%
+\printfield{volume}%
+\setunit*{\addcomma\space}%
+\printfield{pages}%
+\setunit*{\addspace}%
+\printfield{year}%
+\finentry}%
+{%
+\printnames{author}%
+\setunit*{\addcomma\space}%
+\printfield{note}%
+\finentry}}
+
+\DeclareFieldFormat[inbook]{title}{\mkbibitalic{#1}}
+\DeclareBibliographyDriver{inbook}{% Los signos de comentario % en este comando son obligatorios pues de no estar se agregan espacios
+\printnames{author}%
+\newunit%
+\printfield{title}%
+\setunit*{\addspace}\usebibmacro{in:}%
+\printfield{booktitle}%
+\ifthenelse{\ifnameundef{editor}}{}{\setunit*{\addspace}\printtext{(ed.}\space}%
+\printnames{editor}%
+\ifthenelse{\ifnameundef{editor}}{}{\printtext{)}}\newunit\newblock%
+\printlist{publisher}%
+\setunit*{\addcomma\space}%
+\printfield{year}%
+\newunit\newblock%
+\printfield{chapter}%
+\setunit*{\addcomma\space}%
+\printfield{pages}%
+\finentry}
+
+\DeclareFieldFormat[online]{title}{\mkbibitalic{#1}}
+\makeatletter
+\ifthenelse{\equal{\egat@version}{digital}}{\DeclareListFormat[online]{organization}{\ifthenelse{\iffieldundef{url}}{#1}{\href{\thefield{url}}{#1}}}}{\DeclareListFormat[online]{organization}{#1}}
+\makeatother
+\DeclareFieldFormat[online]{version}{#1}
+\DeclareFieldFormat[online]{note}{#1}
+\DeclareFieldFormat[online]{year}{\ifthenelse{\iffieldundef{note}}{\mkbibparens{#1}}{#1}}
+\makeatletter
+\ifthenelse{\equal{\egat@version}{digital}}{
+\DeclareBibliographyDriver{online}{% Los signos de comentario % en este comando son obligatorios pues de no estar se agregan espacios
+\printnames{author}%
+\newunit%
+\printfield{title}%
+\newunit%
+\printlist{organization}%
+\setunit*{\addcomma\space}\ifthenelse{\iffieldundef{version}}{}{\printtext{revisi\'{o}n\intitlepunct}}%
+\printfield{version}%
+\setunit*{\addspace}%
+\ifthenelse{\iffieldundef{note}}{\printfield{year}}{\printtext{recuperado el}\addspace\printfield{note}\printfield{year}}%
+\finentry}
+}{
+\DeclareBibliographyDriver{online}{% Los signos de comentario % en este comando son obligatorios pues de no estar se agregan espacios
+\printnames{author}%
+\newunit%
+\printfield{title}%
+\newunit%
+\printlist{organization}%
+\setunit*{\addcomma\space}\ifthenelse{\iffieldundef{version}}{}{\printtext{revisi\'{o}n\intitlepunct}}%
+\printfield{version}%
+\setunit*{\addspace}%
+\ifthenelse{\iffieldundef{note}}{\printfield{year}}{\printtext{recuperado el}\addspace\printfield{note}\printfield{year}}%
+\newunit%
+\printfield{url}%
+\finentry}
+}
+\makeatother
+
+\DeclareFieldFormat[thesis]{title}{\mkbibitalic{#1}}
+\DeclareFieldFormat[thesis]{year}{\mkbibparens{#1}}
+\DeclareFieldFormat[thesis]{url}{\url{#1}}
+\DeclareBibliographyDriver{thesis}{% ELos signos de comentario % en este comando son obligatorios pues de no estar se agregan espacios
+\iffieldequalstr{note}{Durham}{%
+\printnames{author}%
+\newunit%
+\printfield{year}%
+\setunit*{\addspace}%
+\printfield{title}%
+\setunit*{\addcomma\space}%
+\printfield{type}%
+\setunit*{\addcomma\space}%
+\printlist{institution}%
+\newunit%
+\printtext{Available at Durham E-Theses Online:}%
+\setunit*{\addspace}%
+\printfield{url}%
+}{
+\printnames{author}%
+\setunit*{\addspace}%
+\printfield{year}%
+\newunit%
+\printfield{title}%
+\setunit*{\addcomma\space}%
+\printfield{type}%
+\setunit*{\addcomma\space}%
+\printlist{institution}%
+\setunit*{\addcomma\space}%
+\printfield{location}%
+}%
+\finentry}
+
+% Rutas y archivos externos
+
+\makeatletter
+\ifthenelse{\equal{\egat@version}{digital} \OR \equal{\egat@version}{giovanni}}{
+\graphicspath{{Imagenes/},{Planos/}}
+}{
+\graphicspath{{Imagenes_BN/},{Planos_BN/}}
+}
+\makeatother
+\lstset{inputpath={Codigos/}}
+\addbibresource{Archivos/Referencias.bib}
+
+% Configuraci\'{o}n de los m\'{a}rgenes del contenido principal
+
+\geometry{
+paperwidth=\hojaAncho,
+paperheight=\hojaAlto,
+includeall,
+textwidth=\mainWidth,
+twoside,
+bindingoffset=15.9mm,
+inner=5mm,
+top=5mm,
+head=6mm,
+headsep=5mm,
+footnotesep=5mm,
+foot=5pt,
+bottom=15mm,
+heightrounded,
+marginparsep=5mm,
+marginpar=35mm
+}
+
+% Definici\'{o}n de la portada
+
+%\newlength{\miLongitud}
+%\setlength{\miLongitud}{\textheight-1in*\ratio{448.83655px}{399.18717px}-1in*\ratio{492.79842px}{442.58134px}-20pt-1.99423pt}
+%\def\maketitle{
+%\begin{titlepage}
+%\begin{minipage}[c][\textheight][s]{1in}
+%\centering
+%\includegraphics[width=1in]{\logoU}\\[10pt]
+%\vrule width 2pt height \miLongitud\hskip 1mm\vrule width 1pt height \miLongitud\\[10pt]
+%\includegraphics[width=1in]{\logoI}
+%\end{minipage}\hskip 10pt
+%\begin{minipage}[c][\textheight]{\textwidth-10pt-1in}
+%\centering
+%{\fontsize{14.15}{16.98}\selectfont\scshape\Universidad} % 16.98 = 14.15*1.2
+%\vspace{3mm}\hrule height 2pt
+%\vspace{1mm}\hrule height 1pt
+%\vspace{5mm}
+%{\normalsize\scshape\Instituto}\par
+%\vfill
+%{\begin{singlespace}\huge\scshape\Titulo\par\end{singlespace}}
+%\vfill
+%{\LARGE\uppercase\expandafter{\Asunto}}\\[15pt]
+%QUE PARA OBTENER EL GRADO DE:\\[3pt]
+%{\scshape\Grado}\\[15pt]
+%PRESENTA:\\[3pt]
+%{\scshape\Nombre}\par
+%\vfill
+%{\small TUTOR:\\{\scshape\Tutor}}\par
+%\vfill
+%{\scshape\Ciudad\hfill\Mes, \Anio}
+%\end{minipage}
+%\end{titlepage}
+%}
+
+\def\maketitle{
+\begin{titlepage}
+\begin{minipage}[t][\textheight*\real{0.95}][t]{\textwidth}
+\centering
+\includegraphics[width=3cm]{\logoU}\\[7mm]
+{\fontsize{14}{16.8}\fontfamily{lmss}\selectfont\bfseries\MakeUppercase{\Universidad}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\Posgrado}}\\
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\Campo}}\\
+\vfill
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\Titulo}}\\
+\vfill
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\Asunto}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{Que para optar por la}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{candidatura al grado de \Grado}}\\
+\vfill
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{Presenta:}}\\[1mm]
+{\fontsize{14}{16.8}\fontfamily{lmss}\selectfont\MakeUppercase{\Nombre}}\\
+\vfill
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{Tutor principal}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\Tutor}}\\[2mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{Miembros del Comité Tutor}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\ComiteUno}}\\[1mm]
+{\fontsize{12}{14.4}\fontfamily{lmss}\selectfont\MakeUppercase{\ComiteDos}}\\[5mm]
+{\fontsize{10}{12}\fontfamily{lmss}\selectfont\MakeUppercase{\Ciudad~\Mes~de~\Anio}}
+\end{minipage}
+\end{titlepage}
+}
+
+% Configuraci\'{o}n de los estilos de las diferentes secciones del documento
+
+%% Estilo de los encabezados de las p\'{a}ginas que no pertenecen al contenido principal
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\bfseries\scshape#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{{\bfseries\thesection.}~#1}{}}
+\fancyhf{}
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\leftmark}
+\renewcommand{\headrulewidth}{0.5mm}
+
+%% Estilo de la primera p\'{a}gina de los Agradecimientos
+
+\newcommand\acknowledgments[2][]{
+\titleformat{\chapter}[display]{\filright}{}{5pt}{\begin{singlespace}\normalsize\begin{flushright}#1\end{flushright}\end{singlespace}\vspace{10pt}\bfseries\scshape\LARGE#2\\[5pt]\titlerule[1pt]}
+\titlespacing*{\chapter}{0mm}{-5mm}{0mm}
+\assignpagestyle{\chapter}{empty}
+\chapter*{#2}
+}
+
+%% Estilo de la primera p\'{a}gina de cap\'{i}tulos especiales
+
+\makeatletter
+\newcommand{\specialchapter}{\@ifstar\untocspecialchapter\tocspecialchapter}
+\makeatother
+\newcommand\untocspecialchapter[1]{
+\titleformat{\chapter}[display]{\filright}{}{5pt}{\bfseries\scshape\LARGE#1\\[5pt]\titlerule[1pt]}
+\titlespacing*{\chapter}{0mm}{-5mm}{0mm}
+\assignpagestyle{\chapter}{empty}
+\chapter*{#1}
+}
+\newcommand\tocspecialchapter[1]{
+\titleformat{\chapter}[display]{\filright}{}{5pt}{\bfseries\scshape\LARGE#1\\[5pt]\titlerule[1pt]}
+\titlespacing*{\chapter}{0mm}{-5mm}{0mm}
+\assignpagestyle{\chapter}{empty}
+\chapter{#1}
+}
+
+%% Estilo de la primera p\'{a}gina de ToC, LoT, LoF, Idx y Bib 
+
+\newcommand\ToCs[1]{
+\titleformat{\chapter}[display]{\filright}{}{5pt}{\bfseries\scshape\LARGE#1\\[5pt]\titlerule[1pt]}
+\titlespacing*{\chapter}{0mm}{-5mm}{0mm}
+\assignpagestyle{\chapter}{empty}
+}
+\let\idxbib\ToCs
+
+%% Estilo de la primera p\'{a}gina de los cap\'{i}tulos
+
+\titleformat{\chapter}[display]{\filcenter}{\titlerule[2pt]\vspace{2pt}\titlerule[1pt]\vspace{5pt}\Large\bf{\chaptertitlename~{\LARGE\thechapter}}\\\vspace{10pt}\Huge\textnormal{#1}}{5pt}{\titlerule[1pt]}
+\titlespacing{\chapter}{0mm}{-5mm}{5mm}
+\assignpagestyle{\chapter}{empty}
+
+%% Estilo de los encabezados de las p\'{a}ginas del \'{I}ndice
+
+\indexsetup{headers={\bfseries\scshape\indexname}{\bfseries\scshape\indexname},othercode={\thispagestyle{indexheader}}}
+\fancypagestyle{indexheader}{\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}\fancyhf{}}
+
+% Configuraci\'{o}n de los contenidos locales
+
+\newcommand{\localToC}{
+\startcontents[chapters]
+\printcontents[chapters]{}{1}{\addtocontents{ptc}{\protect\setcounter{tocdepth}{3}}\titlerule\vspace{3mm}}{\vspace{3mm}\titlerule\vspace{10mm}}
+}
+
+% Definici\'{o}n de los comandos de las diferentes secciones del documento
+
+%% La portada
+
+\newcommand{\portada}{
+\newgeometry{includeheadfoot,
+width=\titleWidth,
+bindingoffset=0mm,%15.9mm,
+inner=\titleMargen/2+1mm,%5mm,
+top=10mm,%5mm,
+head=2.5mm,%6mm,
+headsep=0mm,%5mm,
+foot=5pt,
+bottom=10mm,%5mm,
+heightrounded}
+\maketitle
+\clearpage                     %%%%%%%%%%%%%%%%%%%%%%% Quitar de esta línea hasta la 653 si se pone jurado
+\newgeometry{includeheadfoot,
+width=\frontbackWidth,
+twoside,
+inner=\fbwInner,
+top=20mm,
+head=6mm,
+headsep=5mm,
+foot=5pt,
+bottom=15mm,
+heightrounded}
+\savegeometry{frontback}
+\setlength{\headwidth}{\frontbackWidth}}
+
+%% La hoja de datos del jurado
+
+\newcommand{\jurado}{
+\newgeometry{includeheadfoot,
+width=\titleWidth,
+twoside,
+inner=\innerJurado,
+top=10mm,%5mm,
+head=0mm,%,6mm,
+headsep=0mm,%5mm,
+foot=5pt,
+bottom=5mm,
+heightrounded}
+\thispagestyle{empty}
+{\centering\bfseries Hoja de datos del jurado\par}
+\vfill
+\begin{table}[H]
+\footnotesize
+\centering
+\begin{tabular}{cp{100mm}}
+1. & Datos del alumno\\[-1mm]
+ & Alonso\\[-1mm]
+ & Torres\\[-1mm]
+ & Edgar Giovanni\\[-1mm]
+ & 55 48 57 84 57\\[-1mm]
+ & \Universidad\\[-1mm]
+ & Instituto de Física\\[-1mm]
+ & Maestría en Ciencias (Física)\\[-1mm]
+ & 312290395\\
+2. & Datos del sinodal 1\\[-1mm]
+ & Dr.\\[-1mm]
+ & Asaf\\[-1mm]
+ & Paris\\[-1mm]
+ & Mandoki\\
+3. & Datos del sinodal 2\\[-1mm]
+ & Dr.\\[-1mm]
+ & Pedro Antonio\\[-1mm]
+ & Quinto\\[-1mm]
+ & Su\\
+4. & Datos del sinodal 3\\[-1mm]
+ & Dr.\\[-1mm]
+ & Freddy Jackson\\[-1mm]
+ & Poveda\\[-1mm]
+ & Cuevas\\
+5. & Datos del sinodal 4\\[-1mm]
+ & Dr.\\[-1mm]
+ & Jesús\\[-1mm]
+ & Flores\\[-1mm]
+ & Mijangos\\
+6. & Datos del sinodal 5\\[-1mm]
+ & Dr.\\[-1mm]
+ & Jorge Amin\\[-1mm]
+ & Seman\\[-1mm]
+ & Harutinian\\
+%7. & Datos del sinodal 6\\[-1mm]
+% & Dr.\\[-1mm]
+% & Nombre(s)\\[-1mm]
+% & Apellido 1\\[-1mm]
+% & Apellido 2 (si aplica)\\
+%8. & Datos del sinodal 7\\[-1mm]
+% & Dr.\\[-1mm]
+% & Nombre(s)\\[-1mm]
+% & Apellido 1\\[-1mm]
+% & Apellido 2 (si aplica)\\
+9. & Datos de la tesis\\[-1mm]
+ & \Titulo\\[-1mm]
+ & {\hypersetup{linkcolor=black}\ref{TotPages}} p.\\[-1mm]
+ & \Anio
+\end{tabular}
+\end{table}
+\vfill
+\clearpage
+\newgeometry{includeheadfoot,
+width=\frontbackWidth,
+twoside,
+inner=\fbwInner,
+top=20mm,
+head=6mm,
+headsep=5mm,
+foot=5pt,
+bottom=15mm,
+heightrounded}
+\savegeometry{frontback}
+\setlength{\headwidth}{\frontbackWidth}}
+
+%% La Dedicatoria
+
+\newenvironment{dedicatoria}{\newpage\thispagestyle{empty}\setlength{\topskip}{0in}\begin{singlespace}\normalsize\begin{flushright}\vspace*{-1ex}\vspace*{\fill}\vspace*{\fill}\vspace*{\fill}\vspace*{\fill}\slshape}{\vfill\vfill\vfill\vfill\vfill\vfill\vfill\vfill\vfill\vfill\vfill\end{flushright}\end{singlespace}\newpage}
+
+%% Los Agradecimientos
+
+%\newenvironment{agradecimientos}[1][]{\fancyhead[LO,RE]{\bfseries\scshape Agradecimientos}\acknowledgments[#1]{\pdfbookmark[0]{Agradecimientos}{Agradecimientos}Agradecimientos}\begin{singlespace}\normalsize}{\end{singlespace}\clearpage}
+
+\newenvironment{agradecimientos}[1][]{
+\ifthenelse{\isempty{#1}}{
+\fancyhead[LO,RE]{\bfseries\scshape Agradecimientos}\specialchapter*{\pdfbookmark[0]{Agradecimientos}{Agradecimientos}Agradecimientos}\begin{singlespace}\normalsize
+}{
+\fancyhead[LO,RE]{\bfseries\scshape Agradecimientos}\acknowledgments[#1]{\pdfbookmark[0]{Agradecimientos}{Agradecimientos}Agradecimientos}\begin{singlespace}\normalsize
+}}{\end{singlespace}\clearpage}
+
+%% El Resumen
+
+\newenvironment{resumen}{\fancyhead[LO,RE]{\bfseries\scshape Resumen}\specialchapter*{\pdfbookmark[0]{Resumen}{Resumen}Resumen}\begin{singlespace}\normalsize}{\end{singlespace}\clearpage}
+
+%% The Abstract
+
+%%% Las llaves que parece que est\'{a}n dem\'{a}s es porque los comandos \specialchapter y \ToCs se deben aislar en un grupo, de no hacerse se aplica ese estilo a lo subsecuente
+
+\newenvironment{abstract}{\csname @openrightfalse\endcsname\fancyhead[LO,RE]{\bfseries\scshape Abstract}\specialchapter*{\pdfbookmark[0]{Abstract}{Abstract}Abstract}\begin{singlespace}\normalsize}{\end{singlespace}\clearpage}
+
+%% ToC
+
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\renewcommand{\contentsname}{\nombreToC}{\fancyhead[LO,RE]{\bfseries\scshape\nombreToC}\ToCs{\pdfbookmark[0]{\nombreToC}{\nombreToC}\nombreToC}\oldtableofcontents}\clearpage}
+
+%% LoT
+
+\let\oldlistoftables\listoftables
+\renewcommand{\listoftables}{\renewcommand{\tablename}{Tabla}{\fancyhead[LO,RE]{\bfseries\scshape\nombreLoT}\ToCs{\addcontentsline{toc}{chapter}{\nombreLoT}\nombreLoT}\oldlistoftables}\clearpage}
+
+%% LoF
+
+\let\oldlistoffigures\listoffigures
+\renewcommand{\listoffigures}{{\fancyhead[LO,RE]{\bfseries\scshape\nombreLoF}\ToCs{\addcontentsline{toc}{chapter}{\nombreLoF}\nombreLoF}\oldlistoffigures}\clearpage}
+
+%% El Prefacio
+
+\newenvironment{Nomenclatura}{\fancyhead[LO,RE]{\leftmark}\specialchapter{Nomenclatura}\begin{singlespace}\normalsize}{\end{singlespace}}
+
+%% El contenido principal
+
+\let\oldmainmatter\mainmatter
+\renewcommand{\mainmatter}{\restoregeometry\oldmainmatter\setlength{\headwidth}{\mainWidth}\input{Archivos/Encabezados}}
+
+%% Los ap\'{e}ndices
+
+\let\oldappendix\appendix
+\renewcommand{\appendix}{\oldappendix\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}}
+\newcommand{\apendiceExtra}{0}
+%\makeatletter
+%\newcommand{\@AlphAlph}{} % Revisa que \@AlphAlph no este definido
+%\let\@AlphAlph=\AlphAlph % Define el tipo de enumeraci\'{o}n de p\'{a}ginas en letras que excede el alfabeto
+%\makeatother
+
+%% Los c\'{o}digos
+
+\renewcommand{\lstlistingname}{\nombreCodigo}
+\lstdefinestyle{python}{
+backgroundcolor=\color{codBackground},
+commentstyle=\color{codComentarios},
+basicstyle=\small\ttfamily,
+keywordstyle=\bfseries\color{codPalabrasClave},
+numberstyle=\small\color{codLineas},
+numbersep=5pt,
+stringstyle=\ifthenelse{\equal{\egat@version}{digital} \OR \equal{\egat@version}{giovanni}}{\color{codCadena}}{\itshape\color{codCadena}},
+emphstyle=\color{codEmfatizado},
+showspaces=false,
+showstringspaces=false,
+showtabs=false,
+numbers=left,
+captionpos=b,
+frame=single,
+rulecolor=\color{black},
+breakatwhitespace=false,
+breaklines=true,
+keepspaces=true,
+tabsize=4,
+upquote=true,
+emph={loadtxt,argmin,abs,Tk,withdraw,iconbitmap,askopenfilename,destroy,log,interp,zeros,dot,inv,plot,std,sqrt,show,linspace,meshgrid,shape,bitwise_or,masked_array,arange,hypot,figure,imshow,colorbar,streamplot,quiver,xlabel,ylabel,gradient,legend}
+}
+%\lstnewenvironment{python}[1][]{\lstset{style=python,language=Python,#1}}{}
+\newcommand{\Python}[2][]{\lstinputlisting[style=python,language=Python,#1]{#2}}
+%\lstdefinestyle{mathematica}{
+%}
+%\lstnewenvironment{Mathematica}[1][]{\lstset{style=mathematica,language=Mathematica,#1}}{}
+
+%% El \'{I}ndice
+
+\newcommand{\indice}{\idxbib{\nombreIdx}\loadgeometry{frontback}\setlength{\headwidth}{\frontbackWidth}\printindex\clearpage}
+
+%% La Bibliograf\'{i}a
+
+\DefineBibliographyStrings{spanish}{
+andothers = {\mkbibitalic{et\addabbrvspace al\adddot}}
+}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+\emergencystretch=1em
+\DeclareSourcemap{\maps[datatype=bibtex]{\map{\step[fieldsource=url,match=\regexp{\\\%},replace=\regexp{\%}]}}}
+\newcommand{\bibliografia}{
+\newgeometry{includeheadfoot,
+width=\bibWidth,
+twoside,
+inner=\fbwInner,
+top=20mm,
+head=6mm,
+headsep=5mm,
+foot=5pt,
+bottom=15mm,
+heightrounded}
+\idxbib{\nombreBib}\setlength{\headwidth}{\bibWidth}\defbibnote{legaldoc}{\markboth{\bfseries\scshape\nombreBib}{\bfseries\scshape\nombreBib}}\printbibliography[heading=bibintoc,title={\nombreBib},prenote=legaldoc]\clearpage}
+
+% Definici\'{o}n de comandos y operadores personales
+
+\newcommand{\p}{\leavevmode{\parindent=5mm\indent}}
+\newcommand\btrule[1]{\specialrule{#1}{0pt}{0pt}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\nat}{\mathbb{N}\cup\{0\}}
+\newcommand{\natu}{\mathbb{N}}
+\newcommand{\ente}{\mathbb{Z}}
+\newcommand{\raci}{\mathbb{Q}}
+\newcommand{\irra}{\mathbb{I}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\prim}{\mathbb{P}}
+\newcommand{\bfmath}[1]{\boldmath#1\unboldmath}
+\newcommand{\vektor}[1]{\text{\textbf{#1}}}
+\newcommand{\st}[1]{\left|\enspace#1\right.}
+\newcommand{\oto}{\:\scalebox{1.6}{$\rightarrowtail$}\:}
+\newcommand{\supra}{\:\scalebox{1.6}{$\twoheadrightarrow$}\:}
+\newcommand{\sm}[1]{{#1}}%{{\scriptscriptstyle#1}}
+\renewcommand{\Re}{\operatorname{Re}\hspace{-0.6mm}}
+\renewcommand{\Im}{\operatorname{Im}\hspace{-0.6mm}}
+\makeatletter
+\newcommand{\ket}{\@ifstar\iket\rket}
+\newcommand{\bra}{\@ifstar\ibra\rbra}
+\newcommand{\braket}{\@ifstar\ibraket\rbraket}
+\newcommand{\ketbra}{\@ifstar\iketbra\rketbra}
+\makeatother
+\newcommand{\rket}[1]{\left|\mathrm{#1}\right\rangle}
+\newcommand{\iket}[1]{\left|#1\right\rangle}
+\newcommand{\rbra}[1]{\left\langle\mathrm{#1}\right|}
+\newcommand{\ibra}[1]{\left\langle#1\right|}
+{\catcode`\|=\active
+\xdef\rbraket{\protect\expandafter\noexpand\csname rbraket \endcsname}
+\expandafter\gdef\csname rbraket \endcsname#1{\begingroup
+\mathcode`\|32768\let|\rBraVert
+\left\langle\mathrm{#1}\right\rangle\endgroup}
+}
+\makeatletter
+\def\rBraVert{\@ifnextchar|{\,\egroup\middle|\,\bgroup\@gobble}{\,\egroup\middle|\mathrm\bgroup}}
+\makeatother
+{\catcode`\|=\active
+\xdef\ibraket{\protect\expandafter\noexpand\csname ibraket \endcsname}
+\expandafter\gdef\csname ibraket \endcsname#1{\begingroup
+\mathcode`\|32768\let|\iBraVert
+\left\langle{#1}\right\rangle\endgroup}
+}
+\makeatletter
+\def\iBraVert{\@ifnextchar|{\,\egroup\middle|\mathrm\bgroup\@gobble}{\,\egroup\middle|\,\bgroup}}
+\makeatother
+\newcommand{\rketbra}[2]{\left|\mathrm{#1}\right\rangle\hspace{-1.4mm}\left\langle\mathrm{#2}\right|}
+\newcommand{\iketbra}[2]{\left|#1\right\rangle\left\langle#2\right|}
+\newcommand{\MRkern}{
+\mkern-3.4mu
+\mathchoice{}{}{\mkern0.2mu}{\mkern0.5mu}
+}
+\DeclareMathOperator{\Dom}{Dom}
+\DeclareMathOperator{\Cod}{Cod}
+\DeclareMathOperator{\Img}{Img}
+\DeclareMathOperator{\Graf}{Graf}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\arccsc}{arc\:csc}
+\DeclareMathOperator{\arcsec}{arc\:sec}
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\argsenh}{arg\:senh}
+\DeclareMathOperator{\argcosh}{arg\:cosh}
+\DeclareMathOperator{\argtanh}{argtanh}
+\DeclareMathOperator{\argcsch}{arg\:csch}
+\DeclareMathOperator{\argsech}{arg\:sech}
+\DeclareMathOperator{\argcoth}{argcoth}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\OD}{\mathit O\MRkern\mathit D}
+\DeclareSymbolFont{mathchar}{OML}{txmi}{m}{it}
+\DeclareMathSymbol{\varpsi}{\mathord}{mathchar}{32}
+\DeclareMathSymbol{\varrho}{\mathord}{mathchar}{37}
+\DeclareMathSymbol{\vflow}{\mathord}{mathchar}{118}
+\DeclareSymbolFont{mathcall}{OMS}{txsy}{m}{n}
+\DeclareMathSymbol{\iH}{\mathord}{mathcall}{72}
+\DeclareMathSymbol{\Prob}{\mathord}{mathcall}{80}
+\DeclareMathSymbol{\E}{\mathord}{mathcall}{69}
+\DeclareMathSymbol{\D}{\mathord}{mathcall}{68}
+\DeclareMathSymbol{\V}{\mathord}{mathcall}{86}
+\DeclareMathSymbol{\Q}{\mathord}{mathcall}{81}
+\DeclareMathSymbol{\A}{\mathord}{mathcall}{65}
+\DeclareMathSymbol{\R}{\mathord}{mathcall}{82}
+\DeclareMathSymbol{\T}{\mathord}{mathcall}{84}
+
+% Cajas de color
+
+\tcbset{enhanced, before skip=2mm, after skip=3mm, boxrule=0.4pt, left=5mm, right=5mm, top=1mm, bottom=1mm, colback=\tcbcolback, colframe=\tcbcolframe, sharp corners, rounded corners=southeast, arc is angular, arc=3mm, underlay={
+\path[fill=\tcbfill] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+\path[draw=tcbcolframe, shorten <=-0.05mm, shorten >=-0.05mm] ([yshift=3mm]interior.south east)--++(-0.4,-0.1)--++(0.1,-0.2);
+}, drop fuzzy shadow}
